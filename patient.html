@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - Hospital MS</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Hospital MS - Patient</div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Patient Dashboard</h1>
+            <p>Browse doctors, book appointments, and view your medical history</p>
+        </div>
+
+        <!-- Departments Grid -->
+        <section class="card">
+            <h2>Departments</h2>
+            <div class="departments-grid" id="departmentsGrid">
+                <!-- Departments will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Doctors List per Department -->
+        <section class="card">
+            <h2>Available Doctors</h2>
+            <div class="filter-section">
+                <label for="departmentFilter">Filter by Department:</label>
+                <select id="departmentFilter" class="filter-select">
+                    <option value="all">All Departments</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="General Medicine">General Medicine</option>
+                </select>
+            </div>
+            <div class="doctors-list" id="doctorsList">
+                <!-- Doctors will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Doctor Availability Calendar -->
+        <section class="card">
+            <h2>Doctor Availability Calendar</h2>
+            <div class="calendar-controls">
+                <div class="form-group">
+                    <label for="doctorSelectCalendar">Select Doctor:</label>
+                    <select id="doctorSelectCalendar" class="filter-select">
+                        <option value="">Choose a doctor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="calendarDate">Select Date:</label>
+                    <input type="date" id="calendarDate" name="calendarDate">
+                </div>
+            </div>
+            
+            <div class="availability-calendar" id="availabilityCalendar">
+                <div class="calendar-info">
+                    <p>Select a doctor to view availability</p>
+                </div>
+            </div>
+            
+            <div class="slot-legend">
+                <div class="legend-item">
+                    <span class="slot-indicator slot-available"></span>
+                    <span>Available</span>
+                </div>
+                <div class="legend-item">
+                    <span class="slot-indicator slot-booked"></span>
+                    <span>Booked</span>
+                </div>
+                <div class="legend-item">
+                    <span class="slot-indicator slot-unavailable"></span>
+                    <span>Unavailable</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medical History Table -->
+        <section class="card">
+            <h2>Medical History</h2>
+            <div class="table-actions">
+                <button id="exportCsvBtn" class="btn btn-secondary">📥 Export to CSV</button>
+            </div>
+            <div class="table-container">
+                <table class="data-table" id="medicalHistoryTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Doctor</th>
+                            <th>Department</th>
+                            <th>Diagnosis</th>
+                            <th>Prescription</th>
+                            <th>Follow-up</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medicalHistoryTableBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="scripts/patient.js"></script>
+</body>
+</html>

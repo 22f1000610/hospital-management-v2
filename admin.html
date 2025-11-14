@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Hospital MS</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Hospital MS - Admin</div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <p>Manage doctors, patients, and appointments</p>
+        </div>
+
+        <!-- Add Doctor Form Section -->
+        <section class="card">
+            <h2>Add New Doctor</h2>
+            <form id="addDoctorForm" class="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="doctorName">Doctor Name *</label>
+                        <input type="text" id="doctorName" name="doctorName" required>
+                        <span class="error-message" id="doctorNameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctorEmail">Email *</label>
+                        <input type="email" id="doctorEmail" name="doctorEmail" required>
+                        <span class="error-message" id="doctorEmailError"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="doctorPhone">Phone *</label>
+                        <input type="tel" id="doctorPhone" name="doctorPhone" required>
+                        <span class="error-message" id="doctorPhoneError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctorSpecialization">Specialization *</label>
+                        <select id="doctorSpecialization" name="doctorSpecialization" required>
+                            <option value="">Select Department</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="General Medicine">General Medicine</option>
+                        </select>
+                        <span class="error-message" id="doctorSpecializationError"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="doctorExperience">Years of Experience *</label>
+                        <input type="number" id="doctorExperience" name="doctorExperience" min="0" max="50" required>
+                        <span class="error-message" id="doctorExperienceError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctorQualification">Qualification *</label>
+                        <input type="text" id="doctorQualification" name="doctorQualification" required>
+                        <span class="error-message" id="doctorQualificationError"></span>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add Doctor</button>
+                    <button type="reset" class="btn btn-secondary">Clear Form</button>
+                </div>
+                <div id="formSuccessMessage" class="success-message"></div>
+            </form>
+        </section>
+
+        <!-- Registered Doctors Table -->
+        <section class="card">
+            <h2>Registered Doctors</h2>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Specialization</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Experience</th>
+                            <th>Qualification</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doctorsTableBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Registered Patients Table -->
+        <section class="card">
+            <h2>Registered Patients</h2>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Registration Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patientsTableBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Upcoming Appointments -->
+        <section class="card">
+            <h2>Upcoming Appointments</h2>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Appointment ID</th>
+                            <th>Patient Name</th>
+                            <th>Doctor Name</th>
+                            <th>Department</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentsTableBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="scripts/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - Hospital MS</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Hospital MS - Doctor</div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Doctor Dashboard</h1>
+            <p>Manage appointments and patient records</p>
+        </div>
+
+        <!-- Upcoming Appointments -->
+        <section class="card">
+            <h2>Upcoming Appointments</h2>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Patient Name</th>
+                            <th>Age</th>
+                            <th>Contact</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doctorAppointmentsTableBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Assigned Patients List -->
+        <section class="card">
+            <h2>Assigned Patients</h2>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Last Visit</th>
+                            <th>Condition</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assignedPatientsTableBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Update Patient History Form -->
+        <section class="card">
+            <h2>Update Patient History</h2>
+            <form id="updatePatientHistoryForm" class="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="patientSelect">Select Patient *</label>
+                        <select id="patientSelect" name="patientSelect" required>
+                            <option value="">Choose a patient</option>
+                        </select>
+                        <span class="error-message" id="patientSelectError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="visitDate">Visit Date *</label>
+                        <input type="date" id="visitDate" name="visitDate" required>
+                        <span class="error-message" id="visitDateError"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="symptoms">Symptoms *</label>
+                        <textarea id="symptoms" name="symptoms" rows="3" required></textarea>
+                        <span class="error-message" id="symptomsError"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="diagnosis">Diagnosis *</label>
+                        <textarea id="diagnosis" name="diagnosis" rows="4" required placeholder="Enter detailed diagnosis..."></textarea>
+                        <span class="error-message" id="diagnosisError"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prescription">Prescription *</label>
+                        <textarea id="prescription" name="prescription" rows="4" required placeholder="Enter medications and dosage..."></textarea>
+                        <span class="error-message" id="prescriptionError"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="followUpDate">Follow-up Date</label>
+                        <input type="date" id="followUpDate" name="followUpDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Update History</button>
+                    <button type="reset" class="btn btn-secondary">Clear Form</button>
+                </div>
+                <div id="historyFormSuccessMessage" class="success-message"></div>
+            </form>
+        </section>
+
+        <!-- Doctor Availability Calendar -->
+        <section class="card">
+            <h2>Manage Availability</h2>
+            <div class="availability-controls">
+                <div class="form-group">
+                    <label for="availabilityDate">Select Date</label>
+                    <input type="date" id="availabilityDate" name="availabilityDate">
+                </div>
+            </div>
+            
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3>Weekly Availability Schedule</h3>
+                </div>
+                <div class="time-slots-grid" id="timeSlotsGrid">
+                    <!-- Time slots will be generated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="slot-legend">
+                <div class="legend-item">
+                    <span class="slot-indicator available"></span>
+                    <span>Available</span>
+                </div>
+                <div class="legend-item">
+                    <span class="slot-indicator booked"></span>
+                    <span>Booked</span>
+                </div>
+                <div class="legend-item">
+                    <span class="slot-indicator unavailable"></span>
+                    <span>Unavailable</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="scripts/doctor.js"></script>
+</body>
+</html>
