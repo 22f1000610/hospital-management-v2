@@ -4,59 +4,59 @@
 let doctors = [
     {
         id: 1,
-        name: "Dr. Sarah Johnson",
+        name: "Dr. Rajesh Kumar",
         specialization: "Cardiology",
-        email: "sarah.j@hospital.com",
-        phone: "555-0101",
+        email: "rajesh.kumar@syntura.com",
+        phone: "+91-667-1234-5678",
         experience: 15,
-        qualification: "MD, FACC"
+        qualification: "MD"
     },
     {
         id: 2,
-        name: "Dr. Michael Chen",
+        name: "Dr. Priya Sharma",
         specialization: "Neurology",
-        email: "m.chen@hospital.com",
-        phone: "555-0102",
+        email: "priya.sharma@syntura.com",
+        phone: "+91-666-2345-6789",
         experience: 12,
-        qualification: "MD, PhD"
+        qualification: "DM"
     },
     {
         id: 3,
-        name: "Dr. Emily Martinez",
+        name: "Dr. Anil Patel",
         specialization: "Pediatrics",
-        email: "emily.m@hospital.com",
-        phone: "555-0103",
+        email: "anil.patel@syntura.com",
+        phone: "+91-667-3456-7890",
         experience: 8,
-        qualification: "MD, FAAP"
+        qualification: "MBBS"
     }
 ];
 
 let patients = [
     {
         id: 1,
-        name: "John Smith",
+        name: "Deepika Singh",
         age: 45,
-        gender: "Male",
-        email: "john.smith@email.com",
-        phone: "555-0201",
+        gender: "Female",
+        email: "deepika.singh@email.com",
+        phone: "+91-667-4567-8901",
         registrationDate: "2024-01-15"
     },
     {
         id: 2,
-        name: "Mary Johnson",
+        name: "Arjun Verma",
         age: 32,
-        gender: "Female",
-        email: "mary.j@email.com",
-        phone: "555-0202",
+        gender: "Male",
+        email: "arjun.verma@email.com",
+        phone: "+91-666-5678-9012",
         registrationDate: "2024-02-20"
     },
     {
         id: 3,
-        name: "Robert Davis",
+        name: "Meera Reddy",
         age: 58,
-        gender: "Male",
-        email: "r.davis@email.com",
-        phone: "555-0203",
+        gender: "Female",
+        email: "meera.reddy@email.com",
+        phone: "+91-667-6789-0123",
         registrationDate: "2024-03-10"
     }
 ];
@@ -64,8 +64,8 @@ let patients = [
 let appointments = [
     {
         id: 1,
-        patientName: "John Smith",
-        doctorName: "Dr. Sarah Johnson",
+        patientName: "Deepika Singh",
+        doctorName: "Dr. Rajesh Kumar",
         department: "Cardiology",
         date: "2024-11-20",
         time: "10:00 AM",
@@ -73,8 +73,8 @@ let appointments = [
     },
     {
         id: 2,
-        patientName: "Mary Johnson",
-        doctorName: "Dr. Michael Chen",
+        patientName: "Arjun Verma",
+        doctorName: "Dr. Priya Sharma",
         department: "Neurology",
         date: "2024-11-21",
         time: "2:00 PM",
@@ -82,8 +82,8 @@ let appointments = [
     },
     {
         id: 3,
-        patientName: "Robert Davis",
-        doctorName: "Dr. Emily Martinez",
+        patientName: "Meera Reddy",
+        doctorName: "Dr. Anil Patel",
         department: "Pediatrics",
         date: "2024-11-19",
         time: "11:30 AM",
@@ -114,6 +114,7 @@ function loadDoctorsTable() {
             <td>${doctor.phone}</td>
             <td>${doctor.experience} years</td>
             <td>${doctor.qualification}</td>
+            <td><button class="btn btn-edit" onclick="openEditDoctorModal(${doctor.id})">Edit</button></td>
         `;
         tbody.appendChild(row);
     });
@@ -134,6 +135,7 @@ function loadPatientsTable() {
             <td>${patient.email}</td>
             <td>${patient.phone}</td>
             <td>${patient.registrationDate}</td>
+            <td><button class="btn btn-edit" onclick="openEditPatientModal(${patient.id})">Edit</button></td>
         `;
         tbody.appendChild(row);
     });
@@ -193,14 +195,14 @@ function setupFormValidation() {
             isValid = false;
         }
         
-        // Phone validation
+        // Phone validation (Indian format: +91-XXX-XXXX-XXXX)
         const phone = document.getElementById('doctorPhone').value.trim();
-        const phonePattern = /^[\d\s\-\(\)]+$/;
+        const phonePattern = /^\+91-\d{3}-\d{4}-\d{4}$/;
         if (phone === '') {
             showError('doctorPhoneError', 'Phone number is required');
             isValid = false;
-        } else if (!phonePattern.test(phone) || phone.length < 10) {
-            showError('doctorPhoneError', 'Please enter a valid phone number');
+        } else if (!phonePattern.test(phone)) {
+            showError('doctorPhoneError', 'Please enter in format: +91-XXX-XXXX-XXXX');
             isValid = false;
         }
         
@@ -306,3 +308,97 @@ if (localStorage.getItem('appointments')) {
         console.error('Error loading appointments from localStorage:', e);
     }
 }
+
+// ===== Edit Doctor Modal Functions =====
+function openEditDoctorModal(doctorId) {
+    const doctor = doctors.find(d => d.id === doctorId);
+    if (!doctor) return;
+    
+    document.getElementById('editDoctorId').value = doctor.id;
+    document.getElementById('editDoctorName').value = doctor.name;
+    document.getElementById('editDoctorEmail').value = doctor.email;
+    document.getElementById('editDoctorPhone').value = doctor.phone;
+    document.getElementById('editDoctorSpecialization').value = doctor.specialization;
+    document.getElementById('editDoctorExperience').value = doctor.experience;
+    document.getElementById('editDoctorQualification').value = doctor.qualification;
+    
+    document.getElementById('editDoctorModal').classList.add('show');
+}
+
+function closeEditDoctorModal() {
+    document.getElementById('editDoctorModal').classList.remove('show');
+}
+
+// Edit doctor form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const editDoctorForm = document.getElementById('editDoctorForm');
+    if (editDoctorForm) {
+        editDoctorForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const doctorId = parseInt(document.getElementById('editDoctorId').value);
+            const doctor = doctors.find(d => d.id === doctorId);
+            
+            if (doctor) {
+                doctor.name = document.getElementById('editDoctorName').value.trim();
+                doctor.email = document.getElementById('editDoctorEmail').value.trim();
+                doctor.phone = document.getElementById('editDoctorPhone').value.trim();
+                doctor.specialization = document.getElementById('editDoctorSpecialization').value;
+                doctor.experience = parseInt(document.getElementById('editDoctorExperience').value);
+                doctor.qualification = document.getElementById('editDoctorQualification').value;
+                
+                localStorage.setItem('doctors', JSON.stringify(doctors));
+                loadDoctorsTable();
+                closeEditDoctorModal();
+                alert('Doctor information updated successfully!');
+            }
+        });
+    }
+});
+
+// ===== Edit Patient Modal Functions =====
+function openEditPatientModal(patientId) {
+    const patient = patients.find(p => p.id === patientId);
+    if (!patient) return;
+    
+    document.getElementById('editPatientId').value = patient.id;
+    document.getElementById('editPatientName').value = patient.name;
+    document.getElementById('editPatientAge').value = patient.age;
+    document.getElementById('editPatientGender').value = patient.gender;
+    document.getElementById('editPatientEmail').value = patient.email;
+    document.getElementById('editPatientPhone').value = patient.phone;
+    document.getElementById('editPatientRegistrationDate').value = patient.registrationDate;
+    
+    document.getElementById('editPatientModal').classList.add('show');
+}
+
+function closeEditPatientModal() {
+    document.getElementById('editPatientModal').classList.remove('show');
+}
+
+// Edit patient form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const editPatientForm = document.getElementById('editPatientForm');
+    if (editPatientForm) {
+        editPatientForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const patientId = parseInt(document.getElementById('editPatientId').value);
+            const patient = patients.find(p => p.id === patientId);
+            
+            if (patient) {
+                patient.name = document.getElementById('editPatientName').value.trim();
+                patient.age = parseInt(document.getElementById('editPatientAge').value);
+                patient.gender = document.getElementById('editPatientGender').value;
+                patient.email = document.getElementById('editPatientEmail').value.trim();
+                patient.phone = document.getElementById('editPatientPhone').value.trim();
+                patient.registrationDate = document.getElementById('editPatientRegistrationDate').value;
+                
+                localStorage.setItem('patients', JSON.stringify(patients));
+                loadPatientsTable();
+                closeEditPatientModal();
+                alert('Patient information updated successfully!');
+            }
+        });
+    }
+});

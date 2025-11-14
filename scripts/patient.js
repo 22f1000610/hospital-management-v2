@@ -13,58 +13,58 @@ let departments = [
 let doctors = [
     {
         id: 1,
-        name: "Dr. Sarah Johnson",
+        name: "Dr. Rajesh Kumar",
         specialization: "Cardiology",
         experience: 15,
-        qualification: "MD, FACC",
-        email: "sarah.j@hospital.com"
+        qualification: "MD",
+        email: "rajesh.kumar@syntura.com"
     },
     {
         id: 2,
-        name: "Dr. Michael Chen",
+        name: "Dr. Priya Sharma",
         specialization: "Neurology",
         experience: 12,
-        qualification: "MD, PhD",
-        email: "m.chen@hospital.com"
+        qualification: "DM",
+        email: "priya.sharma@syntura.com"
     },
     {
         id: 3,
-        name: "Dr. Emily Martinez",
+        name: "Dr. Anil Patel",
         specialization: "Pediatrics",
         experience: 8,
-        qualification: "MD, FAAP",
-        email: "emily.m@hospital.com"
+        qualification: "MBBS",
+        email: "anil.patel@syntura.com"
     },
     {
         id: 4,
-        name: "Dr. James Wilson",
+        name: "Dr. Kavita Menon",
         specialization: "Orthopedics",
         experience: 20,
-        qualification: "MD, FAAOS",
-        email: "j.wilson@hospital.com"
+        qualification: "MS",
+        email: "kavita.menon@syntura.com"
     },
     {
         id: 5,
-        name: "Dr. Lisa Anderson",
+        name: "Dr. Sanjay Gupta",
         specialization: "Dermatology",
         experience: 10,
-        qualification: "MD, FAAD",
-        email: "l.anderson@hospital.com"
+        qualification: "MD",
+        email: "sanjay.gupta@syntura.com"
     },
     {
         id: 6,
-        name: "Dr. David Brown",
+        name: "Dr. Ananya Iyer",
         specialization: "General Medicine",
         experience: 18,
-        qualification: "MD, FACP",
-        email: "d.brown@hospital.com"
+        qualification: "MBBS",
+        email: "ananya.iyer@syntura.com"
     }
 ];
 
 let medicalHistory = [
     {
         date: "2024-11-10",
-        doctor: "Dr. Sarah Johnson",
+        doctor: "Dr. Rajesh Kumar",
         department: "Cardiology",
         diagnosis: "Mild hypertension",
         prescription: "Lisinopril 10mg daily, Low sodium diet",
@@ -72,7 +72,7 @@ let medicalHistory = [
     },
     {
         date: "2024-10-15",
-        doctor: "Dr. Michael Chen",
+        doctor: "Dr. Priya Sharma",
         department: "Neurology",
         diagnosis: "Tension headache",
         prescription: "Ibuprofen 400mg as needed, Stress management",
@@ -80,7 +80,7 @@ let medicalHistory = [
     },
     {
         date: "2024-09-20",
-        doctor: "Dr. David Brown",
+        doctor: "Dr. Ananya Iyer",
         department: "General Medicine",
         diagnosis: "Seasonal allergies",
         prescription: "Cetirizine 10mg daily, Nasal spray",

@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Dashboard - Hospital MS</title>
+    <title>Patient Dashboard - Syntura</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">Hospital MS - Patient</div>
+        <div class="nav-brand">SYNTURA - Patient</div>
         <div class="nav-links">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
             <a href="index.html" class="nav-link">← Back to Home</a>
         </div>
     </nav>
@@ -112,6 +115,7 @@
         </section>
     </div>
 
+    <script src="scripts/theme.js"></script>
     <script src="scripts/patient.js"></script>
 </body>
 </html>

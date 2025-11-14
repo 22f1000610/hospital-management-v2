@@ -4,25 +4,25 @@
 let appointments = [
     {
         time: "09:00 AM",
-        patientName: "John Smith",
+        patientName: "Deepika Singh",
         age: 45,
-        contact: "555-0201",
+        contact: "+91-667-4567-8901",
         reason: "Regular checkup",
         status: "scheduled"
     },
     {
         time: "10:30 AM",
-        patientName: "Mary Johnson",
+        patientName: "Arjun Verma",
         age: 32,
-        contact: "555-0202",
+        contact: "+91-666-5678-9012",
         reason: "Follow-up consultation",
         status: "scheduled"
     },
     {
         time: "02:00 PM",
-        patientName: "Robert Davis",
+        patientName: "Meera Reddy",
         age: 58,
-        contact: "555-0203",
+        contact: "+91-667-6789-0123",
         reason: "New symptoms",
         status: "scheduled"
     }
@@ -31,25 +31,25 @@ let appointments = [
 let assignedPatients = [
     {
         id: "P001",
-        name: "John Smith",
+        name: "Deepika Singh",
         age: 45,
-        gender: "Male",
+        gender: "Female",
         lastVisit: "2024-11-10",
         condition: "Hypertension"
     },
     {
         id: "P002",
-        name: "Mary Johnson",
+        name: "Arjun Verma",
         age: 32,
-        gender: "Female",
+        gender: "Male",
         lastVisit: "2024-11-08",
         condition: "Migraine"
     },
     {
         id: "P003",
-        name: "Robert Davis",
+        name: "Meera Reddy",
         age: 58,
-        gender: "Male",
+        gender: "Female",
         lastVisit: "2024-11-05",
         condition: "Diabetes Type 2"
     }

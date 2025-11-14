@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Hospital MS</title>
+    <title>Admin Dashboard - Syntura</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">Hospital MS - Admin</div>
+        <div class="nav-brand">SYNTURA - Admin</div>
         <div class="nav-links">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
             <a href="index.html" class="nav-link">← Back to Home</a>
         </div>
     </nav>
@@ -64,7 +67,19 @@
                     </div>
                     <div class="form-group">
                         <label for="doctorQualification">Qualification *</label>
-                        <input type="text" id="doctorQualification" name="doctorQualification" required>
+                        <select id="doctorQualification" name="doctorQualification" required>
+                            <option value="">Select Qualification</option>
+                            <option value="MBBS">MBBS</option>
+                            <option value="MD">MD</option>
+                            <option value="MS">MS</option>
+                            <option value="DNB">DNB</option>
+                            <option value="DM">DM</option>
+                            <option value="MCh">MCh</option>
+                            <option value="BDS">BDS</option>
+                            <option value="BNYS">BNYS</option>
+                            <option value="DMLT">DMLT</option>
+                            <option value="B.Sc Nursing">B.Sc Nursing</option>
+                        </select>
                         <span class="error-message" id="doctorQualificationError"></span>
                     </div>
                 </div>
@@ -90,6 +105,7 @@
                             <th>Phone</th>
                             <th>Experience</th>
                             <th>Qualification</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody id="doctorsTableBody">
@@ -113,6 +129,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Registration Date</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody id="patientsTableBody">
@@ -146,6 +163,126 @@
         </section>
     </div>
 
+    <!-- Edit Doctor Modal -->
+    <div id="editDoctorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Doctor</h2>
+                <button class="modal-close" onclick="closeEditDoctorModal()">&times;</button>
+            </div>
+            <form id="editDoctorForm" class="form">
+                <input type="hidden" id="editDoctorId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editDoctorName">Doctor Name *</label>
+                        <input type="text" id="editDoctorName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDoctorEmail">Email *</label>
+                        <input type="email" id="editDoctorEmail" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editDoctorPhone">Phone *</label>
+                        <input type="tel" id="editDoctorPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDoctorSpecialization">Specialization *</label>
+                        <select id="editDoctorSpecialization" required>
+                            <option value="">Select Department</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="General Medicine">General Medicine</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editDoctorExperience">Years of Experience *</label>
+                        <input type="number" id="editDoctorExperience" min="0" max="50" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDoctorQualification">Qualification *</label>
+                        <select id="editDoctorQualification" required>
+                            <option value="">Select Qualification</option>
+                            <option value="MBBS">MBBS</option>
+                            <option value="MD">MD</option>
+                            <option value="MS">MS</option>
+                            <option value="DNB">DNB</option>
+                            <option value="DM">DM</option>
+                            <option value="MCh">MCh</option>
+                            <option value="BDS">BDS</option>
+                            <option value="BNYS">BNYS</option>
+                            <option value="DMLT">DMLT</option>
+                            <option value="B.Sc Nursing">B.Sc Nursing</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeEditDoctorModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Patient Modal -->
+    <div id="editPatientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Patient</h2>
+                <button class="modal-close" onclick="closeEditPatientModal()">&times;</button>
+            </div>
+            <form id="editPatientForm" class="form">
+                <input type="hidden" id="editPatientId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editPatientName">Patient Name *</label>
+                        <input type="text" id="editPatientName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPatientAge">Age *</label>
+                        <input type="number" id="editPatientAge" min="0" max="150" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editPatientGender">Gender *</label>
+                        <select id="editPatientGender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPatientEmail">Email *</label>
+                        <input type="email" id="editPatientEmail" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editPatientPhone">Phone *</label>
+                        <input type="tel" id="editPatientPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPatientRegistrationDate">Registration Date *</label>
+                        <input type="date" id="editPatientRegistrationDate" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeEditPatientModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts/theme.js"></script>
     <script src="scripts/admin.js"></script>
 </body>
 </html>

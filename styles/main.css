@@ -5,33 +5,58 @@
     box-sizing: border-box;
 }
 
+/* ===== Light Theme (Default) ===== */
 :root {
-    --primary-color: #4A90E2;
-    --primary-hover: #357ABD;
+    --primary-color: #0099CC;
+    --primary-hover: #007AA3;
     --secondary-color: #7B8794;
     --success-color: #5CB85C;
     --danger-color: #D9534F;
     --warning-color: #F0AD4E;
-    --light-bg: #F8F9FA;
-    --white: #FFFFFF;
-    --text-primary: #2C3E50;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #E8F4F8;
+    --card-bg: #E8F4F8;
+    --text-primary: #1A1A1A;
     --text-secondary: #6C757D;
     --border-color: #DEE2E6;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --button-primary: #0099CC;
+    --button-primary-hover: #007AA3;
+}
+
+/* ===== Dark Theme ===== */
+body.dark-theme {
+    --primary-color: #00D4FF;
+    --primary-hover: #00B8E6;
+    --secondary-color: #7B8794;
+    --success-color: #5CB85C;
+    --danger-color: #D9534F;
+    --warning-color: #F0AD4E;
+    --bg-primary: #1E1E1E;
+    --bg-secondary: #2D2D2D;
+    --card-bg: #2D2D2D;
+    --text-primary: #F0F0F0;
+    --text-secondary: #A8A8A8;
+    --border-color: #404040;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --button-primary: #00D4FF;
+    --button-primary-hover: #00B8E6;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background-color: var(--light-bg);
+    background-color: var(--bg-secondary);
     min-height: 100vh;
+    transition: background-color 300ms ease, color 300ms ease;
 }
 
 /* ===== Navigation Bar ===== */
 .navbar {
-    background-color: var(--white);
+    background-color: var(--bg-primary);
     padding: 1rem 2rem;
     box-shadow: var(--shadow);
     display: flex;
@@ -40,28 +65,53 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color 300ms ease;
 }
 
 .nav-brand {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--primary-color);
+    transition: color 300ms ease;
 }
 
 .nav-links {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
 
 .nav-link {
     text-decoration: none;
     color: var(--text-primary);
     font-weight: 500;
-    transition: color 0.3s;
+    transition: color 300ms ease;
 }
 
 .nav-link:hover {
     color: var(--primary-color);
+}
+
+/* ===== Theme Toggle Button ===== */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 300ms ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-icon {
+    width: 24px;
+    height: 24px;
 }
 
 /* ===== Welcome Page ===== */
@@ -97,11 +147,11 @@ body {
 }
 
 .role-card {
-    background: var(--white);
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: var(--shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 300ms ease;
 }
 
 .role-card:hover {
@@ -149,11 +199,12 @@ body {
 
 /* ===== Card Component ===== */
 .card {
-    background: var(--white);
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 2rem;
     box-shadow: var(--shadow);
+    transition: background-color 300ms ease;
 }
 
 .card h2 {
@@ -161,7 +212,8 @@ body {
     color: var(--text-primary);
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--light-bg);
+    border-bottom: 2px solid var(--border-color);
+    transition: color 300ms ease, border-color 300ms ease;
 }
 
 /* ===== Buttons ===== */
@@ -175,22 +227,22 @@ body {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 300ms ease;
     white-space: nowrap;
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
-    color: var(--white);
+    background-color: var(--button-primary);
+    color: #FFFFFF;
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-hover);
+    background-color: var(--button-primary-hover);
 }
 
 .btn-secondary {
     background-color: var(--secondary-color);
-    color: var(--white);
+    color: #FFFFFF;
 }
 
 .btn-secondary:hover {
@@ -199,13 +251,24 @@ body {
 
 .btn-success {
     background-color: var(--success-color);
-    color: var(--white);
+    color: #FFFFFF;
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
 }
 
 .btn-success:hover {
     background-color: #4cae4c;
+}
+
+.btn-edit {
+    background-color: var(--warning-color);
+    color: #FFFFFF;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn-edit:hover {
+    background-color: #ec971f;
 }
 
 /* ===== Forms ===== */
@@ -241,7 +304,9 @@ body {
     border-radius: 6px;
     font-size: 1rem;
     font-family: inherit;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 300ms ease, box-shadow 300ms ease, background-color 300ms ease, color 300ms ease;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .form-group input:focus,
@@ -297,7 +362,8 @@ body {
 }
 
 .data-table thead {
-    background-color: var(--light-bg);
+    background-color: var(--bg-secondary);
+    transition: background-color 300ms ease;
 }
 
 .data-table th {
@@ -306,15 +372,18 @@ body {
     font-weight: 600;
     color: var(--text-primary);
     border-bottom: 2px solid var(--border-color);
+    transition: color 300ms ease, border-color 300ms ease;
 }
 
 .data-table td {
     padding: 1rem;
     border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: color 300ms ease, border-color 300ms ease;
 }
 
 .data-table tbody tr:hover {
-    background-color: var(--light-bg);
+    background-color: var(--bg-secondary);
 }
 
 .data-table tbody tr:last-child td {
@@ -437,11 +506,11 @@ body {
 }
 
 .doctor-card {
-    background: var(--white);
+    background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 300ms ease, border-color 300ms ease;
 }
 
 .doctor-card:hover {
@@ -578,8 +647,78 @@ body {
 
 .slot-indicator.unavailable,
 .slot-indicator.slot-unavailable {
-    background-color: var(--light-bg);
+    background-color: var(--bg-secondary);
     border-color: var(--border-color);
+}
+
+/* ===== Edit Modal ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 300ms ease;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-hover);
+    animation: slideIn 300ms ease;
+    transition: background-color 300ms ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color 300ms ease;
+}
+
+.modal-close:hover {
+    color: var(--text-primary);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 /* ===== Table Actions ===== */

@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital Management System</title>
+    <title>Syntura Hospital Management System</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-brand">SYNTURA</div>
+        <div class="nav-links">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+    
     <div class="container">
         <div class="welcome-section">
-            <h1>Hospital Management System</h1>
+            <h1>SYNTURA Hospital Management System</h1>
             <p>Select your role to continue</p>
             
             <div class="role-cards">
@@ -36,5 +45,7 @@
             </div>
         </div>
     </div>
+    
+    <script src="scripts/theme.js"></script>
 </body>
 </html>
