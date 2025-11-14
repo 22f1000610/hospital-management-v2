@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntura Hospital Management System</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">SYNTURA</div>
+        <div class="nav-links">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="welcome-section">
+            <h1>SYNTURA Hospital Management System</h1>
+            <p>Select your role to continue</p>
+            
+            <div class="role-cards">
+                <div class="role-card">
+                    <div class="card-icon">👨‍⚕️</div>
+                    <h2>Admin</h2>
+                    <p>Manage doctors, patients, and appointments</p>
+                    <a href="admin.html" class="btn btn-primary">Go to Admin Dashboard</a>
+                </div>
+                
+                <div class="role-card">
+                    <div class="card-icon">🩺</div>
+                    <h2>Doctor</h2>
+                    <p>View appointments, update patient records</p>
+                    <a href="doctor.html" class="btn btn-primary">Go to Doctor Dashboard</a>
+                </div>
+                
+                <div class="role-card">
+                    <div class="card-icon">🏥</div>
+                    <h2>Patient</h2>
+                    <p>Browse doctors, book appointments, view history</p>
+                    <a href="patient.html" class="btn btn-primary">Go to Patient Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts/theme.js"></script>
+</body>
+</html>
