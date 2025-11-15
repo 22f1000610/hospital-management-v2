@@ -1,0 +1,290 @@
+/* ===== Hospital Management System Custom Styles ===== */
+/* Using CSS Variables for theme support with Bootstrap */
+
+:root {
+  --primary-color: #0099CC;
+  --primary-hover: #007AA3;
+  --secondary-color: #7B8794;
+  --success-color: #5CB85C;
+  --danger-color: #D9534F;
+  --warning-color: #F0AD4E;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #E8F4F8;
+  --card-bg: #E8F4F8;
+  --text-primary: #1A1A1A;
+  --text-secondary: #6C757D;
+  --border-color: #DEE2E6;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+body.dark-theme {
+  --primary-color: #00D4FF;
+  --primary-hover: #00B8E6;
+  --bg-primary: #1E1E1E;
+  --bg-secondary: #2D2D2D;
+  --card-bg: #2D2D2D;
+  --text-primary: #F0F0F0;
+  --text-secondary: #A8A8A8;
+  --border-color: #404040;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: var(--shadow);
+  transition: all 300ms ease;
+  color: var(--text-primary) !important;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: var(--bg-primary) !important;
+  box-shadow: var(--shadow);
+  color: var(--text-primary) !important;
+}
+
+.navbar-brand {
+  color: var(--primary-color) !important;
+  font-weight: 600;
+}
+
+.nav-link {
+  color: var(--text-primary) !important;
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Table Styles */
+.table {
+  color: var(--text-primary) !important;
+}
+
+.table thead {
+  background-color: var(--bg-primary);
+  color: var(--text-primary) !important;
+}
+
+/* Form Styles */
+.form-control, .form-select {
+  background-color: var(--bg-primary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--bg-primary) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Modal Styles */
+.modal-content {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Status Badge Styles */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-scheduled {
+  background-color: #E3F2FD;
+  color: #1976D2;
+}
+
+.status-completed {
+  background-color: #E8F5E9;
+  color: #388E3C;
+}
+
+.status-cancelled {
+  background-color: #FFEBEE;
+  color: #D32F2F;
+}
+
+/* Dark theme status badges */
+body.dark-theme .status-scheduled {
+  background-color: rgba(25, 118, 210, 0.2);
+  color: #64B5F6;
+}
+
+body.dark-theme .status-completed {
+  background-color: rgba(56, 142, 60, 0.2);
+  color: #81C784;
+}
+
+body.dark-theme .status-cancelled {
+  background-color: rgba(211, 47, 47, 0.2);
+  color: #E57373;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+/* Role Card Styles for Home Page */
+.role-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.role-card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.role-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+/* Department Grid */
+.departments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.department-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.department-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.department-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Doctor Card */
+.doctor-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.doctor-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Loading Spinner */
+.spinner-border {
+  color: var(--primary-color) !important;
+}
+
+/* Alert Overrides */
+.alert {
+  border-radius: 8px;
+}
+
+/* Welcome Section */
+.welcome-section {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.welcome-section h1 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .role-cards {
+    grid-template-columns: 1fr;
+  }
+}
